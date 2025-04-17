@@ -3,91 +3,55 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Mock data for the milestone gallery
+// Updated data for milestone gallery with only 1 photo per month
 const milestoneData = [
   {
     month: 1,
-    photos: [
-      { id: 1, caption: "First Yawn (so sleepy!)", url: "https://source.unsplash.com/random/600x800/?baby,newborn" },
-      { id: 2, caption: "Baby's First Smile", url: "https://source.unsplash.com/random/600x800/?baby,smile" }
-    ]
+    photo: { id: 1, caption: "First Yawn (so sleepy!)", url: "https://source.unsplash.com/random/600x800/?baby,newborn" }
   },
   {
     month: 2,
-    photos: [
-      { id: 3, caption: "Discovering My Hands", url: "https://source.unsplash.com/random/600x800/?baby,hands" },
-      { id: 4, caption: "Tummy Time Champion", url: "https://source.unsplash.com/random/600x800/?baby,tummy" }
-    ]
+    photo: { id: 2, caption: "Discovering My Hands", url: "https://source.unsplash.com/random/600x800/?baby,hands" }
   },
   {
     month: 3,
-    photos: [
-      { id: 5, caption: "First Roll Over!", url: "https://source.unsplash.com/random/600x800/?baby,rolling" },
-      { id: 6, caption: "Happy Giggles", url: "https://source.unsplash.com/random/600x800/?baby,laughing" }
-    ]
+    photo: { id: 3, caption: "First Roll Over!", url: "https://source.unsplash.com/random/600x800/?baby,rolling" }
   },
   {
     month: 4,
-    photos: [
-      { id: 7, caption: "Reaching for Toys", url: "https://source.unsplash.com/random/600x800/?baby,toys" },
-      { id: 8, caption: "Curious About Everything", url: "https://source.unsplash.com/random/600x800/?baby,curious" }
-    ]
+    photo: { id: 4, caption: "Reaching for Toys", url: "https://source.unsplash.com/random/600x800/?baby,toys" }
   },
   {
     month: 5,
-    photos: [
-      { id: 9, caption: "First Tastes of Food", url: "https://source.unsplash.com/random/600x800/?baby,food" },
-      { id: 10, caption: "Sitting Up Like a Pro", url: "https://source.unsplash.com/random/600x800/?baby,sitting" }
-    ]
+    photo: { id: 5, caption: "First Tastes of Food", url: "https://source.unsplash.com/random/600x800/?baby,food" }
   },
   {
     month: 6,
-    photos: [
-      { id: 11, caption: "Half Birthday Celebration", url: "https://source.unsplash.com/random/600x800/?baby,celebration" },
-      { id: 12, caption: "Bath Time Fun", url: "https://source.unsplash.com/random/600x800/?baby,bath" }
-    ]
+    photo: { id: 6, caption: "Half Birthday Celebration", url: "https://source.unsplash.com/random/600x800/?baby,celebration" }
   },
   {
     month: 7,
-    photos: [
-      { id: 13, caption: "Crawling Adventures Begin", url: "https://source.unsplash.com/random/600x800/?baby,crawling" },
-      { id: 14, caption: "First Wave Hello!", url: "https://source.unsplash.com/random/600x800/?baby,waving" }
-    ]
+    photo: { id: 7, caption: "Crawling Adventures Begin", url: "https://source.unsplash.com/random/600x800/?baby,crawling" }
   },
   {
     month: 8,
-    photos: [
-      { id: 15, caption: "Standing with Support", url: "https://source.unsplash.com/random/600x800/?baby,standing" },
-      { id: 16, caption: "Exploring the Great Outdoors", url: "https://source.unsplash.com/random/600x800/?baby,outdoors" }
-    ]
+    photo: { id: 8, caption: "Standing with Support", url: "https://source.unsplash.com/random/600x800/?baby,standing" }
   },
   {
     month: 9,
-    photos: [
-      { id: 17, caption: "Learning to Clap", url: "https://source.unsplash.com/random/600x800/?baby,clapping" },
-      { id: 18, caption: "First Steps with Walker", url: "https://source.unsplash.com/random/600x800/?baby,walker" }
-    ]
+    photo: { id: 9, caption: "Learning to Clap", url: "https://source.unsplash.com/random/600x800/?baby,clapping" }
   },
   {
     month: 10,
-    photos: [
-      { id: 19, caption: "Playing Peek-a-boo", url: "https://source.unsplash.com/random/600x800/?baby,peekaboo" },
-      { id: 20, caption: "Dancing to Music", url: "https://source.unsplash.com/random/600x800/?baby,dancing" }
-    ]
+    photo: { id: 10, caption: "Playing Peek-a-boo", url: "https://source.unsplash.com/random/600x800/?baby,peekaboo" }
   },
   {
     month: 11,
-    photos: [
-      { id: 21, caption: "First Words Attempt", url: "https://source.unsplash.com/random/600x800/?baby,talking" },
-      { id: 22, caption: "Building Blocks Tower", url: "https://source.unsplash.com/random/600x800/?baby,blocks" }
-    ]
+    photo: { id: 11, caption: "First Words Attempt", url: "https://source.unsplash.com/random/600x800/?baby,talking" }
   },
   {
     month: 12,
-    photos: [
-      { id: 23, caption: "Standing Tall for Takeoff", url: "https://source.unsplash.com/random/600x800/?baby,standing" },
-      { id: 24, caption: "Ready for Adventures", url: "https://source.unsplash.com/random/600x800/?baby,adventure" }
-    ]
+    photo: { id: 12, caption: "Standing Tall for Takeoff", url: "https://source.unsplash.com/random/600x800/?baby,standing" }
   }
 ];
 
@@ -106,7 +70,7 @@ const MilestoneGallery: React.FC = () => {
 
   return (
     <section id="milestone-gallery" className="relative py-20">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
           className="text-4xl md:text-5xl text-center mb-8"
           initial={{ opacity: 0, y: 20 }}
@@ -164,29 +128,24 @@ const MilestoneGallery: React.FC = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {month?.photos.map((photo, index) => (
-            <motion.div
-              key={photo.id}
-              className="watercolor-card overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-              <div className="aspect-[4/5] overflow-hidden rounded-2xl mb-4">
-                <img
-                  src={photo.url}
-                  alt={photo.caption}
-                  className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-              <p className="font-handwritten text-xl text-center">{photo.caption}</p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          className="watercolor-card overflow-hidden max-w-lg mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="aspect-[4/5] overflow-hidden rounded-2xl mb-4">
+            <img
+              src={month?.photo.url}
+              alt={month?.photo.caption}
+              className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <p className="font-handwritten text-xl text-center">{month?.photo.caption}</p>
+        </motion.div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-8">
           <div className="grid grid-cols-6 md:grid-cols-12 gap-1">
             {Array.from({ length: 12 }).map((_, i) => (
               <button

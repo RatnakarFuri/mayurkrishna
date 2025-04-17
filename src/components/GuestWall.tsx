@@ -2,6 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FloatingBalloon, FloatingStar } from './FloatingElements';
+import { Link } from 'react-router-dom';
+import { CircleEllipsis } from 'lucide-react';
 
 // Mock data for guest wishes
 const guestWishes = [
@@ -37,6 +39,9 @@ const guestWishes = [
   }
 ];
 
+// We only show 6 wishes on the main page
+const visibleWishes = guestWishes.slice(0, 6);
+
 const GuestWall: React.FC = () => {
   return (
     <section id="guest-wall" className="relative py-20">
@@ -52,7 +57,7 @@ const GuestWall: React.FC = () => {
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {guestWishes.map((wish, index) => (
+          {visibleWishes.map((wish, index) => (
             <motion.div
               key={wish.id}
               className="watercolor-card relative overflow-hidden"
@@ -80,9 +85,10 @@ const GuestWall: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <a href="#wishes-form" className="btn-primary">
-            Add Your Message
-          </a>
+          <Link to="/all-wishes" className="btn-primary inline-flex items-center gap-2 hover:scale-105 transition-transform">
+            <span>Load More Wishes</span>
+            <CircleEllipsis size={20} />
+          </Link>
         </motion.div>
       </div>
     </section>

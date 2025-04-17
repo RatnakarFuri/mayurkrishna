@@ -7,18 +7,13 @@ const GuestWishesForm: React.FC = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
-    wish: '',
-    showOnWall: true
+    wish: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, showOnWall: e.target.checked }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,8 +30,7 @@ const GuestWishesForm: React.FC = () => {
       });
       setFormData({
         name: '',
-        wish: '',
-        showOnWall: true
+        wish: ''
       });
     }, 1500);
   };
@@ -92,20 +86,6 @@ const GuestWishesForm: React.FC = () => {
                 className="w-full px-4 py-3 rounded-xl border border-baby-blue border-opacity-50 focus:outline-none focus:ring-2 focus:ring-baby-blue"
                 placeholder="Write your special wish here..."
               />
-            </div>
-
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="showOnWall"
-                name="showOnWall"
-                checked={formData.showOnWall}
-                onChange={handleCheckboxChange}
-                className="w-5 h-5 rounded text-baby-blue focus:ring-baby-blue"
-              />
-              <label htmlFor="showOnWall" className="ml-2">
-                Show this message on the wall
-              </label>
             </div>
 
             <div className="flex justify-center pt-2">
