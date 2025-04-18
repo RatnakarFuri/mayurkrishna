@@ -112,6 +112,9 @@ const GuestWishesForm: React.FC = () => {
                   <SelectItem value="Aunt">Aunt</SelectItem>
                   <SelectItem value="Grandpa">Grandpa</SelectItem>
                   <SelectItem value="Grandma">Grandma</SelectItem>
+                  <SelectItem value="Brother">Brother</SelectItem>
+                  <SelectItem value="Sister">Sister</SelectItem>
+                  <SelectItem value="Family Friend">Family Friend</SelectItem>
                 </SelectContent>
               </Select>
             </div>
