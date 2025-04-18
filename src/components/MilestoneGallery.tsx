@@ -1,57 +1,55 @@
-
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Updated data for milestone gallery with only 1 photo per month
 const milestoneData = [
   {
     month: 1,
-    photo: { id: 1, caption: "First Yawn (so sleepy!)", url: "https://source.unsplash.com/random/600x800/?baby,newborn" }
+    photo: { id: 1, caption: "🥰 Tiny Dreams, Disney Vibes", url: "/lovable-uploads/6dab78ec-0d93-4ef6-baea-1438b82cf3c9.png" }
   },
   {
     month: 2,
-    photo: { id: 2, caption: "Discovering My Hands", url: "https://source.unsplash.com/random/600x800/?baby,hands" }
+    photo: { id: 2, caption: "🎈 High Above the Clouds", url: "/lovable-uploads/932680b0-ae3e-4aa0-8d37-bcf2c4146194.png" }
   },
   {
     month: 3,
-    photo: { id: 3, caption: "First Roll Over!", url: "https://source.unsplash.com/random/600x800/?baby,rolling" }
+    photo: { id: 3, caption: "🌊 Tiny Toes, Sandy Shores", url: "/lovable-uploads/f7b04a1b-fe03-4fa5-9f31-12fb3fb7ee50.png" }
   },
   {
     month: 4,
-    photo: { id: 4, caption: "Reaching for Toys", url: "https://source.unsplash.com/random/600x800/?baby,toys" }
+    photo: { id: 4, caption: "🕉️ Little Prince in Dhoti", url: "/lovable-uploads/f586643f-fdc6-4ad8-afe8-cd2a9db5969b.png" }
   },
   {
     month: 5,
-    photo: { id: 5, caption: "First Tastes of Food", url: "https://source.unsplash.com/random/600x800/?baby,food" }
+    photo: { id: 5, caption: "🏍️ Zoom Zoom, Little One", url: "/lovable-uploads/95552dae-cb77-4dc8-a378-d3df2e0b5f7a.png" }
   },
   {
     month: 6,
-    photo: { id: 6, caption: "Half Birthday Celebration", url: "https://source.unsplash.com/random/600x800/?baby,celebration" }
+    photo: { id: 6, caption: "🎂 Halfway to One!", url: "/lovable-uploads/a850016a-889a-4f85-9c39-93cc7acdc608.png" }
   },
   {
     month: 7,
-    photo: { id: 7, caption: "Crawling Adventures Begin", url: "https://source.unsplash.com/random/600x800/?baby,crawling" }
+    photo: { id: 7, caption: "👨‍🍳 Whisking Up Smiles", url: "/lovable-uploads/874d291a-3edd-4af9-a7fe-537d24ea3cc9.png" }
   },
   {
     month: 8,
-    photo: { id: 8, caption: "Standing with Support", url: "https://source.unsplash.com/random/600x800/?baby,standing" }
+    photo: { id: 8, caption: "🎅 Mini Santa, Maximum Cuteness", url: "/lovable-uploads/ceb239cb-15c3-4154-ae0d-2e3853fbe6e2.png" }
   },
   {
     month: 9,
-    photo: { id: 9, caption: "Learning to Clap", url: "https://source.unsplash.com/random/600x800/?baby,clapping" }
+    photo: { id: 9, caption: "🪁 Sankranthi Smiles & Sunshine", url: "/lovable-uploads/e94ef977-c86d-4ccd-abf7-8494be76d2c0.png" }
   },
   {
     month: 10,
-    photo: { id: 10, caption: "Playing Peek-a-boo", url: "https://source.unsplash.com/random/600x800/?baby,peekaboo" }
+    photo: { id: 10, caption: "🚢 Ahoy, Little Sailor!", url: "/lovable-uploads/013e32d0-fb4f-4bc8-a6aa-27f1d2ae0bb2.png" }
   },
   {
     month: 11,
-    photo: { id: 11, caption: "First Words Attempt", url: "https://source.unsplash.com/random/600x800/?baby,talking" }
+    photo: { id: 11, caption: "🎨 Holi Hai with Mayur", url: "/lovable-uploads/46c49c77-58ca-4d03-968c-a6043dfa1987.png" }
   },
   {
     month: 12,
-    photo: { id: 12, caption: "Standing Tall for Takeoff", url: "https://source.unsplash.com/random/600x800/?baby,standing" }
+    photo: { id: 12, caption: "😄 Giggles On Full Volume", url: "/lovable-uploads/ea3e362c-3634-43fb-bac9-2e8c55e03b54.png" }
   }
 ];
 

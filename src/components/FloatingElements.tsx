@@ -55,23 +55,25 @@ export const FloatingBalloon: React.FC<{
 export const FloatingElements: React.FC = () => {
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-      <FloatingCloud className="top-[10%] left-[5%]" />
-      <FloatingCloud className="top-[30%] right-[5%]" size={60} />
-      <FloatingCloud className="bottom-[40%] left-[10%]" size={50} />
-      <FloatingCloud className="bottom-[20%] right-[15%]" size={45} />
+      <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]" />
       
-      <FloatingStar className="top-[15%] right-[20%]" />
-      <FloatingStar className="top-[40%] left-[25%]" size={16} />
-      <FloatingStar className="bottom-[30%] right-[30%]" size={24} />
-      <FloatingStar className="bottom-[50%] left-[40%]" size={14} />
+      <FloatingCloud className="top-[10%] left-[5%] opacity-30" />
+      <FloatingCloud className="top-[30%] right-[5%] opacity-30" size={60} />
+      <FloatingCloud className="bottom-[40%] left-[10%] opacity-30" size={50} />
+      <FloatingCloud className="bottom-[20%] right-[15%] opacity-30" size={45} />
       
-      <FloatingBalloon className="top-[20%] right-[40%]" color="#FF7E7E" />
-      <FloatingBalloon className="top-[50%] left-[15%]" color="#A6D1E6" />
-      <FloatingBalloon className="bottom-[15%] right-[10%]" color="#FFA07A" />
-      <FloatingBalloon className="bottom-[40%] left-[30%]" color="#98D8AA" />
+      <FloatingStar className="top-[15%] right-[20%] opacity-20" />
+      <FloatingStar className="top-[40%] left-[25%] opacity-20" size={16} />
+      <FloatingStar className="bottom-[30%] right-[30%] opacity-20" size={24} />
+      <FloatingStar className="bottom-[50%] left-[40%] opacity-20" size={14} />
       
-      <FloatingPlane className="top-[25%] left-[35%]" />
-      <FloatingPlane className="bottom-[25%] right-[35%]" size={40} />
+      <FloatingBalloon className="top-[20%] right-[40%] opacity-25" color="#FF7E7E" />
+      <FloatingBalloon className="top-[50%] left-[15%] opacity-25" color="#A6D1E6" />
+      <FloatingBalloon className="bottom-[15%] right-[10%] opacity-25" color="#FFA07A" />
+      <FloatingBalloon className="bottom-[40%] left-[30%] opacity-25" color="#98D8AA" />
+      
+      <FloatingPlane className="top-[25%] left-[35%] opacity-30" />
+      <FloatingPlane className="bottom-[25%] right-[35%] opacity-30" size={40} />
     </div>
   );
 };

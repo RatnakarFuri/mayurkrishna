@@ -17,18 +17,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative">
-      {/* Background floating elements */}
-      <FloatingElements />
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+        <FloatingElements />
+      </div>
       
-      {/* Main content */}
       <main>
         <HeroSection />
         <MilestoneGallery />
         <GuestWishesForm />
         <GuestWall />
         <BirthdayCountdown />
-        <BirthdaySong />
         <DigitalGift />
+        <BirthdaySong />
       </main>
       
       <Footer />
