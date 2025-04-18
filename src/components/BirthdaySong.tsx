@@ -1,9 +1,12 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FloatingBalloon, FloatingStar } from './FloatingElements';
+import { Button } from '@/components/ui/button';
+import { Download } from 'lucide-react';
 
 const BirthdaySong: React.FC = () => {
+  const songDownloadUrl = "https://drive.google.com/uc?export=download&id=1-psgwg4dWsJzChHpT53xJ2CjapFYvE0-";
+
   return (
     <section id="birthday-song" className="relative py-20">
       <div className="absolute -left-4 top-12 opacity-30">
@@ -35,7 +38,7 @@ const BirthdaySong: React.FC = () => {
         </motion.p>
 
         <motion.div 
-          className="watercolor-card"
+          className="watercolor-card mt-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -113,6 +116,15 @@ const BirthdaySong: React.FC = () => {
                     You're destiny's key
                   </p>
                 </div>
+              </div>
+
+              <div className="mt-8 flex justify-center">
+                <Button 
+                  onClick={() => window.open(songDownloadUrl, '_blank')}
+                  className="bg-baby-blue text-white hover:bg-baby-blue/90"
+                >
+                  <Download className="mr-2 h-4 w-4" /> ⬇️ Download Birthday Song
+                </Button>
               </div>
             </div>
           </div>
