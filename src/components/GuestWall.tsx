@@ -1,48 +1,42 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FloatingBalloon, FloatingStar } from './FloatingElements';
 import { Link } from 'react-router-dom';
 import { CircleEllipsis } from 'lucide-react';
 
-// Mock data for guest wishes
-const guestWishes = [
-  {
-    id: 1,
-    name: "Aunty Maya",
-    message: "Wishing you a life full of giggles, sky-high dreams, and endless cuddles!"
-  },
-  {
-    id: 2,
-    name: "Uncle Raj",
-    message: "Happy 1st birthday, little pilot! May your journey be amazing."
-  },
-  {
-    id: 3,
-    name: "Grandma",
-    message: "May you always be brave, curious, and surrounded by love."
-  },
-  {
-    id: 4,
-    name: "Cousin Mia",
-    message: "Fly high and keep smiling, sweet boy!"
-  },
-  {
-    id: 5,
-    name: "Grandpa",
-    message: "One year old already! Time flies when you're having fun. Happy Birthday, Captain!"
-  },
-  {
-    id: 6,
-    name: "The Sharma Family",
-    message: "Wishing the cutest pilot a birthday filled with love, laughter and adventures!"
-  }
-];
-
-// We only show 6 wishes on the main page
-const visibleWishes = guestWishes.slice(0, 6);
+interface GuestWish {
+  id: number;
+  name: string;
+  relation: string;
+  message: string;
+  timestamp: string;
+}
 
 const GuestWall: React.FC = () => {
+  const [wishes, setWishes] = useState<GuestWish[]>([]);
+
+  useEffect(() => {
+    const loadWishes = () => {
+      const storedWishes = JSON.parse(localStorage.getItem('guestWishes') || '[]');
+      setWishes(storedWishes);
+    };
+
+    // Load wishes on initial render
+    loadWishes();
+
+    // Also load when new wishes are added
+    const handleNewWish = () => loadWishes();
+    window.addEventListener('newWishAdded', handleNewWish);
+
+    return () => {
+      window.removeEventListener('newWishAdded', handleNewWish);
+    };
+  }, []);
+
+  // Display only the latest 6 wishes
+  const visibleWishes = wishes.slice(0, 6);
+
   return (
     <section id="guest-wall" className="relative py-20">
       <div className="max-w-6xl mx-auto">
@@ -56,27 +50,38 @@ const GuestWall: React.FC = () => {
           Messages for the Little Aviator
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visibleWishes.map((wish, index) => (
-            <motion.div
-              key={wish.id}
-              className="watercolor-card relative overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className="absolute -right-4 -top-4 opacity-20">
-                {index % 3 === 0 && <FloatingBalloon color="#FF7E7E" />}
-                {index % 3 === 1 && <FloatingStar />}
-                {index % 3 === 2 && <FloatingBalloon color="#98D8AA" />}
-              </div>
-              
-              <p className="font-handwritten text-xl mb-4">"{wish.message}"</p>
-              <p className="text-right font-medium italic">- From {wish.name}</p>
-            </motion.div>
-          ))}
-        </div>
+        {visibleWishes.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {visibleWishes.map((wish, index) => (
+              <motion.div
+                key={wish.id}
+                className="watercolor-card relative overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="absolute -right-4 -top-4 opacity-20">
+                  {index % 3 === 0 && <FloatingBalloon color="#FF7E7E" />}
+                  {index % 3 === 1 && <FloatingStar />}
+                  {index % 3 === 2 && <FloatingBalloon color="#98D8AA" />}
+                </div>
+                
+                <p className="font-handwritten text-xl mb-4">"{wish.message}"</p>
+                <p className="text-right font-medium italic">- From {wish.name}, your loving {wish.relation}</p>
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-xl font-medium">No wishes yet. Be the first to send your blessing!</p>
+          </motion.div>
+        )}
 
         <motion.div 
           className="text-center mt-12"

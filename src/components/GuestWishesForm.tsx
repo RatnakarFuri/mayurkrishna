@@ -2,11 +2,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useToast } from '@/components/ui/use-toast';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
 const GuestWishesForm: React.FC = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
+    relation: '',
     wish: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,11 +19,27 @@ const GuestWishesForm: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleRelationChange = (value: string) => {
+    setFormData(prev => ({ ...prev, relation: value }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // This is a mock submission - in a real app, you'd send this to a backend
+    // Add to local storage
+    const wishes = JSON.parse(localStorage.getItem('guestWishes') || '[]');
+    const newWish = {
+      id: Date.now(),
+      name: formData.name,
+      relation: formData.relation,
+      message: formData.wish,
+      timestamp: new Date().toISOString()
+    };
+    
+    const updatedWishes = [newWish, ...wishes];
+    localStorage.setItem('guestWishes', JSON.stringify(updatedWishes));
+    
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
@@ -30,9 +49,13 @@ const GuestWishesForm: React.FC = () => {
       });
       setFormData({
         name: '',
+        relation: '',
         wish: ''
       });
-    }, 1500);
+      
+      // Trigger a refresh of the guest wall
+      window.dispatchEvent(new CustomEvent('newWishAdded'));
+    }, 1000);
   };
 
   return (
@@ -70,6 +93,27 @@ const GuestWishesForm: React.FC = () => {
                 className="w-full px-4 py-3 rounded-xl border border-baby-blue border-opacity-50 focus:outline-none focus:ring-2 focus:ring-baby-blue"
                 placeholder="Enter your name"
               />
+            </div>
+
+            <div>
+              <Label htmlFor="relation" className="block text-lg font-medium mb-2">
+                Relation
+              </Label>
+              <Select
+                value={formData.relation}
+                onValueChange={handleRelationChange}
+                required
+              >
+                <SelectTrigger className="w-full px-4 py-3 rounded-xl border border-baby-blue border-opacity-50 focus:outline-none focus:ring-2 focus:ring-baby-blue">
+                  <SelectValue placeholder="Select your relation" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Uncle">Uncle</SelectItem>
+                  <SelectItem value="Aunt">Aunt</SelectItem>
+                  <SelectItem value="Grandpa">Grandpa</SelectItem>
+                  <SelectItem value="Grandma">Grandma</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div>

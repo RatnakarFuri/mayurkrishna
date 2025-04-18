@@ -5,6 +5,7 @@ import MilestoneGallery from '@/components/MilestoneGallery';
 import GuestWishesForm from '@/components/GuestWishesForm';
 import GuestWall from '@/components/GuestWall';
 import BirthdayCountdown from '@/components/BirthdayCountdown';
+import BirthdaySong from '@/components/BirthdaySong';
 import DigitalGift from '@/components/DigitalGift';
 import Footer from '@/components/Footer';
 import FloatingElements from '@/components/FloatingElements';
@@ -26,6 +27,7 @@ const Index = () => {
         <GuestWishesForm />
         <GuestWall />
         <BirthdayCountdown />
+        <BirthdaySong />
         <DigitalGift />
       </main>
       

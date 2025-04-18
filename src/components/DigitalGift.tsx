@@ -10,8 +10,15 @@ const DigitalGift: React.FC = () => {
 
   const handleDownload = () => {
     setIsDownloading(true);
-    // In a real app, you would provide an actual download link
-    // This is a mock download that just shows a toast
+    
+    // Create a link element and trigger download
+    const link = document.createElement('a');
+    link.href = '/lovable-uploads/73acc758-6091-49d0-9ea2-93cfa151737b.png';
+    link.download = 'mayurbday.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
     setTimeout(() => {
       setIsDownloading(false);
       toast({
@@ -48,7 +55,7 @@ const DigitalGift: React.FC = () => {
 
           <div className="mb-8 relative overflow-hidden rounded-2xl mx-auto max-w-xs">
             <img
-              src="/lovable-uploads/ae9116dc-68d9-4ea2-b8c1-457cf9cd7149.png"
+              src="/lovable-uploads/73acc758-6091-49d0-9ea2-93cfa151737b.png"
               alt="Captain Mayur Krishna Wallpaper"
               className="w-full object-cover shadow-lg transform transition-transform duration-500 hover:scale-105"
             />
@@ -70,7 +77,7 @@ const DigitalGift: React.FC = () => {
               </span>
             ) : (
               <>
-                Download Wallpaper <Download className="ml-2" size={18} />
+                🎁 Download Wallpaper <Download className="ml-2" size={18} />
               </>
             )}
           </button>
