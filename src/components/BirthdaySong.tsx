@@ -3,12 +3,9 @@ import { motion } from 'framer-motion';
 import { FloatingBalloon, FloatingStar } from './FloatingElements';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
-
 const BirthdaySong: React.FC = () => {
   const songDownloadUrl = "https://drive.google.com/uc?export=download&id=1-psgwg4dWsJzChHpT53xJ2CjapFYvE0-";
-
-  return (
-    <section id="birthday-song" className="relative py-20">
+  return <section id="birthday-song" className="relative py-20">
       <div className="absolute -left-4 top-12 opacity-30">
         <FloatingBalloon color="#FFD6E0" />
       </div>
@@ -17,33 +14,47 @@ const BirthdaySong: React.FC = () => {
       </div>
       
       <div className="max-w-4xl mx-auto">
-        <motion.h2 
-          className="text-4xl md:text-5xl text-center mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <motion.h2 className="text-4xl md:text-5xl text-center mb-8" initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.6
+      }}>
           🎵 A Song for Captain Mayur Krishna
         </motion.h2>
 
-        <motion.p
-          className="text-xl text-center mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
+        <motion.p className="text-xl text-center mb-10" initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.6,
+        delay: 0.1
+      }}>
           This heartfelt track was specially composed to celebrate Mayur Krishna's first birthday. Feel the love and joy in every note!
         </motion.p>
 
-        <motion.div 
-          className="watercolor-card mt-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <motion.div className="watercolor-card mt-8" initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.6,
+        delay: 0.2
+      }}>
           <div className="flex flex-col items-center">
             <div className="w-full">
               <h3 className="text-2xl font-handwritten mb-4 text-center">🎤 Lyrics to Mayur's Birthday Song</h3>
@@ -119,10 +130,7 @@ const BirthdaySong: React.FC = () => {
               </div>
 
               <div className="mt-8 flex justify-center">
-                <Button 
-                  onClick={() => window.open(songDownloadUrl, '_blank')}
-                  className="bg-baby-blue text-white hover:bg-baby-blue/90"
-                >
+                <Button onClick={() => window.open(songDownloadUrl, '_blank')} className="bg-baby-blue hover:bg-baby-blue/90 text-xl text-gray-800 font-semibold px-[17px] my-0 mx-[146px]">
                   <Download className="mr-2 h-4 w-4" /> ⬇️ Download Birthday Song
                 </Button>
               </div>
@@ -130,8 +138,6 @@ const BirthdaySong: React.FC = () => {
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default BirthdaySong;
