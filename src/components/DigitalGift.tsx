@@ -54,9 +54,7 @@ const DigitalGift: React.FC = () => {
         duration: 0.6,
         delay: 0.2
       }}>
-          <p className="text-xl mb-8">
-            Thank you for flying with us! Here's a special Captain Mayur Krishna wallpaper for your phone.
-          </p>
+          <p className="text-xl mb-8">Thank you for flying with us! Here's a special Captain Mayur Krishna wallpaper for your phone. Long-press on the image to download it.</p>
 
           <div className="mb-8 relative overflow-hidden rounded-2xl mx-auto max-w-xs">
             <img alt="Captain Mayur Krishna Wallpaper" className="w-full object-cover shadow-lg transform transition-transform duration-500 hover:scale-105" src="/lovable-uploads/68144c60-8e13-49bf-b71b-68a294fc5754.jpg" />
