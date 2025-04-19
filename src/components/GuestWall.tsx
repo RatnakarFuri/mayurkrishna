@@ -43,9 +43,7 @@ const GuestWall: React.FC = () => {
         once: true
       }} transition={{
         duration: 0.6
-      }}>
-          Messages for the Little Aviator
-        </motion.h2>
+      }}>Your Wishes for the Little Aviator</motion.h2>
 
         {visibleWishes.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {visibleWishes.map((wish, index) => <motion.div key={wish.id} className="watercolor-card relative overflow-hidden" initial={{
